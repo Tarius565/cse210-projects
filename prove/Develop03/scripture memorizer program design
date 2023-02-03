@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-02-03T02:58:17.684Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="VX2GWRR7TbW4_DuqEzmG" version="20.8.14" type="github">
+<mxfile host="app.diagrams.net" modified="2023-02-03T03:00:15.597Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="SGWps3Yveq36PJQTow8x" version="20.8.14" type="github">
   <diagram name="Page-1" id="3wyoudSNoo8ALoiQFXu8">
     <mxGraphModel dx="1401" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
       <root>
@@ -82,7 +82,7 @@
         <mxCell id="hRD2S9cDkBt9iAVGTF-G-33" value="_word : string" style="whiteSpace=wrap;html=1;rounded=0;glass=0;shadow=0;align=left;" parent="1" vertex="1">
           <mxGeometry x="428" y="280" width="170" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="hRD2S9cDkBt9iAVGTF-G-34" value="Hide()&lt;br&gt;Show()&lt;br&gt;IsHidden()&lt;br&gt;GetRenderedText()" style="whiteSpace=wrap;html=1;align=left;rounded=0;glass=0;shadow=0;" parent="1" vertex="1">
+        <mxCell id="hRD2S9cDkBt9iAVGTF-G-34" value="Hide():void&lt;br&gt;Show():void&lt;br&gt;IsHidden():boolean&lt;br&gt;GetRenderedText():string" style="whiteSpace=wrap;html=1;align=left;rounded=0;glass=0;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="428" y="340" width="170" height="80" as="geometry" />
         </mxCell>
         <mxCell id="hRD2S9cDkBt9iAVGTF-G-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=14;" parent="1" source="hRD2S9cDkBt9iAVGTF-G-36" target="hRD2S9cDkBt9iAVGTF-G-38" edge="1">
@@ -97,7 +97,7 @@
         <mxCell id="hRD2S9cDkBt9iAVGTF-G-38" value="_scriptureList : list" style="whiteSpace=wrap;html=1;rounded=0;glass=0;shadow=0;align=left;" parent="1" vertex="1">
           <mxGeometry x="629" y="280" width="170" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="hRD2S9cDkBt9iAVGTF-G-39" value="GetScripture()" style="whiteSpace=wrap;html=1;align=left;rounded=0;glass=0;shadow=0;" parent="1" vertex="1">
+        <mxCell id="hRD2S9cDkBt9iAVGTF-G-39" value="GetScripture():string, string" style="whiteSpace=wrap;html=1;align=left;rounded=0;glass=0;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="629" y="340" width="170" height="80" as="geometry" />
         </mxCell>
       </root>
