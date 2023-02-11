@@ -9,18 +9,19 @@ public class Word
     {
         _word = word;
     }
+    public string getWord()
+    {
+        return _word;
+    }
 
     public string Hide()
     {
         char[] letters = _word.ToCharArray();
         char[] hiddenLetters = new char[letters.Length];
 
-        for(int i=0; i < letters.Length; i++)
+        for(int i=0; i < _word.Length; i++)
         {
-            if(Char.IsLetter(letters[i]))
-            {
-                hiddenLetters[i] = char.Parse("_");
-            }
+            hiddenLetters[i] = char.Parse("_");
         }
         string hidden = new string(hiddenLetters);
 

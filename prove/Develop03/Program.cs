@@ -17,48 +17,51 @@ class Program
 
         Scritpure scritpureToMemorize = new Scritpure();
 
-        scritpureToMemorize.Initialize(text);
+        scritpureToMemorize.Initialize(reference, text);
+        int isEmpty = 1;
 
         Word word = new Word();
+        
+        scritpureToMemorize.TextToDisplay();
 
-        while (userInput != "quit")
+        while ((userInput != "quit") && (isEmpty != 0))
         {
             Console.Write("Press enter to continue or type 'quit' to finish:");
             userInput = Console.ReadLine();
 
-            string textLeft = scritpureToMemorize.GetTextLeft();
-            int numToHide = 0;
-            string wordToHide = "";
-            string hiddenWord = "";
-
-            int spaces = 1;
-            for(int i =0; i < textLeft.Length; i++)
+            int textLeft = scritpureToMemorize.GetTextLeftNum();
+            if(textLeft != 0)
             {
-                if(textLeft[i] == ' ')
+                int numToHide = 0;
+                string wordToHide = "";
+                string hiddenWord = "";
+                int spaces = 1;
+                
+                if(textLeft > 3)
                 {
-                    spaces++;
+                    Random rnd = new Random();
+                    numToHide = rnd.Next(1, 4);
                 }
-            }
-            if(spaces > 3)
-            {
-                Random rnd = new Random();
-                numToHide = rnd.Next(1, 4);
+                else
+                {
+                    numToHide = spaces;
+                }
+                
+                for(int j=0; j < numToHide; j++)
+                {
+                    wordToHide = scritpureToMemorize.GetWordToHide();
+                    word.SetWord(wordToHide);
+                    hiddenWord = word.Hide();
+                    scritpureToMemorize.ReplaceWord(wordToHide, hiddenWord);
+                }
+                
+                Console.Clear();
+                scritpureToMemorize.TextToDisplay();
             }
             else
             {
-                numToHide = spaces;
+                isEmpty = 0;
             }
-            
-            for(int j=0; j < numToHide; j++)
-            {
-                wordToHide = scritpureToMemorize.GetWordToHide();
-                word.SetWord(wordToHide);
-                hiddenWord = word.Hide();
-            }
-            Console.Clear();
-            scritpureToMemorize.ReplaceWholeWord(wordToHide, hiddenWord);
-            scritpureToMemorize.TextToDisplay();
         }
-        
     }
 }

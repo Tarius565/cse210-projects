@@ -5,8 +5,8 @@ public class Scritpure
 {
     private string _reference;
     private string _fullText ="";
-    private string _textLeft ="";
-    private string _hiddenText ="";
+    private List<string> _textLeft = new List<string>();
+    private List<string> _hiddenText = new List<string>();
     private string _textToDisplay ="";
 
 
@@ -20,16 +20,29 @@ public class Scritpure
         _reference = reference;
     }
 
-    public void Initialize(string scritpureToMemorize)
+    public void Initialize(string reference, string scritpureToMemorize)
     {
-        _fullText = scritpureToMemorize;
+        SetReference(reference);
         _textToDisplay = scritpureToMemorize;
-        _textLeft = scritpureToMemorize;
+        _fullText = scritpureToMemorize;
+        _textLeft = scritpureToMemorize.Split(' ').ToList();
     }
 
     public string GetTextLeft()
     {
-        return _textLeft;
+        return String.Join(" ", _textLeft);
+    }
+    public int GetTextLeftNum()
+    {
+        return _textLeft.Count();
+    }
+    public string GetHiddenText()
+    {
+        return String.Join(" ", _hiddenText);
+    }
+    public string GetFullText()
+    {
+        return _fullText;
     }
 
     public void TextToDisplay()
@@ -39,23 +52,25 @@ public class Scritpure
 
     public string GetWordToHide()
     {
-        List<string> wordsList = new List<string>(_textLeft.Split(' '));
         var rnd = new Random();
-        int index = rnd.Next(wordsList.Count);
-        return wordsList[index];
+        int index = rnd.Next(_textLeft.Count);
+        return _textLeft[index];
     }
 
-    public void ReplaceWholeWord(string wordToReplace, string replacementWord)
+    public void ReplaceWord(string wordToReplace, string replacementWord)
     {
-        var pattern = $"\\b{wordToReplace}\\b";
-        Regex.Replace(_textToDisplay, pattern, replacementWord, RegexOptions.IgnoreCase);
+        List<string> listOfTexts = new List<string>();
+        listOfTexts = _textToDisplay.Split(" ").ToList();
+        int index = listOfTexts.FindIndex(s => s == wordToReplace);
+        if(index != -1)
+        {
+            listOfTexts[index] = replacementWord;
+        }
+        _textToDisplay = String.Join(" ", listOfTexts);
 
-        Regex.Replace(_textLeft, pattern, "", RegexOptions.IgnoreCase);
-
-        _hiddenText = _hiddenText + " " + wordToReplace;
+        _textLeft.Remove(wordToReplace);
+        _hiddenText.Add(wordToReplace);
     }
-
-
 
 }
 
