@@ -13,6 +13,7 @@ public class Menu
 
     public string DisplayOptions()
     {
+        Console.Clear();
         Console.WriteLine("Menu Options:");
         foreach(string opt in _options)
         {
