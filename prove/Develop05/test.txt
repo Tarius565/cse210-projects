@@ -1,0 +1,5 @@
+350
+SimpleGoal:save test goal|save save|50|True
+LargeGoal:large save test|just a test|100|2|2|True|~1~save~25~False~2~load~25~False
+ChecklistGoal:test checklist goal|just another test|25|100|2|2|True
+EternalGoal:Eternal Goal Test|fdj|50
