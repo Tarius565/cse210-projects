@@ -1,0 +1,9 @@
+From a glance the program is a budget manager. It will accept inputs that will be categorized depending on the details (expense, income, savings, etc).
+The program will have a function that will save the data out to a .txt or .csv file where it can be easily accessed and changed via the program.
+The program will not use a GUi at all so it will be just terminal based for navigation and display.
+
+Abstraction, encapsulation, inheritance, and polymorphism will all be used. Abstraction will be used through the separate classes having their own individual attributes.
+Encapsulation will be implemented by protecting those attributes from the separate classes so they cannot be changed directly.
+Inheritance is implemented by grouping all of the inputs together into a budget type class (ie expenses and savings being under an income class).
+Polymorphism will be implemented since each of the different types of budget items will have a different way of being displayed (ie expenses and savings will show positive and
+negative values).
