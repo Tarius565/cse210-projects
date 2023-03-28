@@ -10,6 +10,7 @@ public abstract class BudgetItem
         _name = name;
         _amount = amount;
     }
+    public BudgetItem(){ }
 
     public string GetName()
     {

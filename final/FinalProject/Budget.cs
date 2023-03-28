@@ -14,10 +14,53 @@ public class Budget
         _items.Add(item);
     }
 
-    public void RemoveItem(BudgetItem item)
+    public void EditItem(BudgetItem item)
     {
-        _items.Remove(item);
+        int index = -1;
+        string name = item.GetName();
+        
+        for (int i = 0; i < _items.Count(); i++)
+        {
+            if (_items[i].GetName() == name)
+            {
+                index = i;
+            }
+        }
+        if (index == -1)
+        {
+            Console.WriteLine($"Item {name} not found.");
+        }
+        else
+        {
+            _items[index] = item;
+            Console.WriteLine($" Item {name} has been modified.");
+            Console.WriteLine();
+        }
     }
+
+    public void RemoveItem(string name)
+    {
+        int index = -1;
+        
+        for (int i = 0; i < _items.Count(); i++)
+        {
+            if (_items[i].GetName() == name)
+            {
+                index = i;
+            }
+        }
+        if (index == -1)
+        {
+            Console.WriteLine($"Item {name} not found.");
+        }
+        else
+        {
+            Console.WriteLine($" Item {name} has been deleted.");
+            Console.WriteLine();
+            _items.RemoveAt(index);
+        }
+    }
+
     public void DisplayBudget()
     {
         foreach (BudgetItem item in _items)
@@ -41,6 +84,50 @@ public class Budget
                 item.DisplayDetails();
             }
         }
+        foreach (BudgetItem item in _items)
+        {
+            if (item is Debt)
+            {
+                item.DisplayDetails();
+            }
+        }
+    }
+
+    public void DisplayIncomes()
+    {
+        foreach (BudgetItem item in _items)
+        {
+            if (item is Income)
+            {
+                item.DisplayDetails();
+            }
+        }
+    }
+
+    public void DisplayExpenses()
+    {
+        foreach (BudgetItem item in _items)
+        {
+            if (item is Expense)
+            {
+                item.DisplayDetails();
+            }
+        }
+    }
+
+    public void DisplaySavings()
+    {
+        foreach (BudgetItem item in _items)
+        {
+            if (item is Savings)
+            {
+                item.DisplayDetails();
+            }
+        }
+    }
+
+    public void DisplayDebt()
+    {
         foreach (BudgetItem item in _items)
         {
             if (item is Debt)
@@ -104,11 +191,17 @@ public class Budget
 
     public double GetRemainingBudget()
     {
-        return GetTotalIncome() - GetTotalExpenses() - GetTotalSavings();
+        return GetTotalIncome() - GetTotalExpenses();
     }
 
-    public IEnumerable<BudgetItem> GetItems()
+    public List<BudgetItem> GetItems()
     {
         return _items;
     }
+
+    public void SetItems(List<BudgetItem> items)
+    {
+        _items = items;
+    }
+
 }

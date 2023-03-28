@@ -3,6 +3,7 @@ using System;
 public class BudgetMenu
 {
     private BudgetManager _budgetManager;
+    private BudgetDataFileManager _dataManager;
 
     public BudgetMenu()
     {
@@ -40,6 +41,7 @@ public class BudgetMenu
                         Console.Clear();
                         Console.WriteLine("==============================");
                         Console.WriteLine("Add Budget Item");
+                        Console.WriteLine("***Make sure that the items have different names***");
                         Console.WriteLine("==============================");
                         Console.WriteLine("1. Add Income");
                         Console.WriteLine("2. Add Expense");
@@ -49,7 +51,6 @@ public class BudgetMenu
                         Console.WriteLine("==============================");
 
                         Console.Write("Enter your choice (1-5): ");
-                        
                         input = Console.ReadLine();
 
                         if (int.TryParse(input, out subChoice))
@@ -89,7 +90,6 @@ public class BudgetMenu
                         Console.WriteLine("==============================");
 
                         Console.Write("Enter your choice (1-5): ");
-                        
                         input = Console.ReadLine();
 
                         if (int.TryParse(input, out subChoice))
@@ -129,7 +129,6 @@ public class BudgetMenu
                         Console.WriteLine("==============================");
 
                         Console.Write("Enter your choice (1-5): ");
-                        
                         input = Console.ReadLine();
 
                         if (int.TryParse(input, out subChoice))
@@ -164,6 +163,9 @@ public class BudgetMenu
                         break;
                     case 6:
                         LoadBudget();
+                        break;
+                    case 0:
+                        Console.WriteLine("Thank you!");
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Try again.");
@@ -234,48 +236,130 @@ public class BudgetMenu
     }
     private void EditIncome()
     {
+        _budgetManager.DisplayIncomes();
 
+        Console.Write("Enter the income name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Enter new income amount: ");
+        double amount = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter new income source: ");
+        string source = Console.ReadLine();
+
+        _budgetManager.EditIncome(name, amount, source);
     }
     private void EditExpense()
     {
+        _budgetManager.DisplayExpenses();
 
+        Console.Write("Enter the expense name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Enter new expense amount: ");
+        double amount = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter new expense category: ");
+        string category = Console.ReadLine();
+
+        _budgetManager.EditExpense(name, amount, category);
     }
     private void EditSavings()
     {
+        _budgetManager.DisplaySavings();
 
+        Console.Write("Enter the savings name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Enter new savings amount: ");
+        double amount = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter new savings goal: ");
+        string goal = Console.ReadLine();
+
+        _budgetManager.EditSavings(name, amount, goal);
     }
     private void EditDebt()
     {
+        _budgetManager.DisplayDebt();
 
+        Console.Write("Enter the debt name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Enter new debt amount: ");
+        double amount = double.Parse(Console.ReadLine());
+
+        Console.Write("Enter new debt source: ");
+        string source = Console.ReadLine();
+
+        _budgetManager.EditDebt(name, amount, source);
     }
     private void RemoveIncome()
     {
+        _budgetManager.DisplayIncomes();
 
+        Console.Write("Enter income name: ");
+        string name = Console.ReadLine();
+
+        _budgetManager.RemoveItem(name);
     }
     private void RemoveExpense()
     {
+        _budgetManager.DisplayExpenses();
+
         Console.Write("Enter expense name: ");
         string name = Console.ReadLine();
 
+        _budgetManager.RemoveItem(name);
     }
     private void RemoveSavings()
     {
+        _budgetManager.DisplaySavings();
 
+        Console.Write("Enter savings name: ");
+        string name = Console.ReadLine();
+
+        _budgetManager.RemoveItem(name);
     }
     private void RemoveDebt()
     {
+        _budgetManager.DisplayDebt();
 
+        Console.Write("Enter debt name: ");
+        string name = Console.ReadLine();
+
+        _budgetManager.RemoveItem(name);
     }
     private void ShowSummary()
     {
-
+        _budgetManager.DisplayBudget();
     }
     private void SaveBudget()
     {
+        string file = DataFile();
+        _dataManager = new BudgetDataFileManager(file);
 
+        _dataManager.SaveBudgetData(_budgetManager.GetList());
+        Console.WriteLine($"File {file} has been saved successfully.");
+        Console.Write("Press any key to continue: ");
+        Console.ReadLine();
     }
     private void LoadBudget()
     {
+        string file = DataFile();
+        _dataManager = new BudgetDataFileManager(file);
 
+        _budgetManager.SetList(_dataManager.LoadBudgetData());
+        Console.WriteLine($"File {file} has been loaded successfully.");
+        Console.Write("Press any key to continue: ");
+        Console.ReadLine();
+    }
+
+    private string DataFile()
+    {
+        Console.Write("What is the name of the file? (ignoring the .xxx): ");
+        string file = Console.ReadLine();
+
+        return file;
     }
 }
