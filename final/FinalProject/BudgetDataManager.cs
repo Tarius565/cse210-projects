@@ -57,8 +57,8 @@ public class BudgetDataFileManager
                 switch (type)
                 {
                     case "Income":
-                        string IncomeSource = data[2];
-                        Income income = new Income(name, amount, IncomeSource);
+                        string incomeSource = data[2];
+                        Income income = new Income(name, amount, incomeSource);
                         budgetList.Add(income);
                         break;
                     case "Expense":

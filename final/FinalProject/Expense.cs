@@ -22,6 +22,6 @@ public class Expense : BudgetItem
 
     public override void DisplayDetails()
     {
-        Console.WriteLine($"Type: {this.GetType()}, Name: {this.GetName()}, Amount: {this.GetAmount():C}, Category: {_category}");
+        Console.WriteLine($"Type: {this.GetType()}, Name: {this.GetName()}, Amount: -{this.GetAmount():C}, Category: {_category}");
     }
 }

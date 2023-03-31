@@ -88,7 +88,7 @@ public class BudgetManager
         _budget.DisplayBudget();
         Console.WriteLine("==============================");
         Console.WriteLine($"Total Income: {_budget.GetTotalIncome():C}");
-        Console.WriteLine($"Total Expenses: {_budget.GetTotalExpenses():C}");
+        Console.WriteLine($"Total Expenses: -{_budget.GetTotalExpenses():C}");
         Console.WriteLine($"Total Savings: {_budget.GetTotalSavings():C}");
         Console.WriteLine($"Total Debt: {_budget.GetTotalDebt():C}");
         Console.WriteLine($"Remaining Budget: {_budget.GetRemainingBudget():C}");
