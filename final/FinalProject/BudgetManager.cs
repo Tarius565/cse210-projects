@@ -93,7 +93,7 @@ public class BudgetManager
         Console.WriteLine($"Total Debt: {_budget.GetTotalDebt():C}");
         Console.WriteLine($"Remaining Budget: {_budget.GetRemainingBudget():C}");
         Console.WriteLine("==============================");
-        Console.Write("Press any key to continue: ");
+        Console.Write("Press 'enter' to continue: ");
         Console.ReadLine();
     }
 

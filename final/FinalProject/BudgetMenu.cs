@@ -341,7 +341,7 @@ public class BudgetMenu
 
         _dataManager.SaveBudgetData(_budgetManager.GetList());
         Console.WriteLine($"File {file} has been saved successfully.");
-        Console.Write("Press any key to continue: ");
+        Console.Write("Press 'enter' to continue: ");
         Console.ReadLine();
     }
     private void LoadBudget()
@@ -351,7 +351,7 @@ public class BudgetMenu
 
         _budgetManager.SetList(_dataManager.LoadBudgetData());
         Console.WriteLine($"File {file} has been loaded successfully.");
-        Console.Write("Press any key to continue: ");
+        Console.Write("Press 'enter' to continue: ");
         Console.ReadLine();
     }
 
